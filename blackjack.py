@@ -114,13 +114,13 @@ def show_some(player, dealer):
     print("\nDealers Hand: ")  
     print(" <card hidden>")
     print("", dealer.cards)
-    print("\nPLayers Hand: ", *player.cards, sep='\n ')
+    print("\nPLayers Hand: ", *player.cards)
 
 
 def show_all(player, dealer):
-    print("\nDealers Hand: ", dealer.cards, sep='\n ')  
+    print("\nDealers Hand: ", dealer.cards)  
     print("Dealers Hand: ", dealer.value)
-    print("\nPlayers Hand: ", player.cards, sep='\n')
+    print("\nPlayers Hand: ", player.card)
     print("Players Hand =", player.value)  
 
 
@@ -148,18 +148,17 @@ def dealer_wins(self, chips):
     chips.lose_bet()    
 
 
-def push(self, player, dealer):  # player and dealer ties
+def push(self, player, dealer):  
     print("Its a push! Player and Dealer tie!")    
 
 
 
 
-#gameplay
+
 
 while True:
     print("Welcome to BlackJack")
 
-    # create and shuffle deck
     deck = Deck()
     deck.shuffle()
 
@@ -174,18 +173,18 @@ while True:
     player_hand.add_card(deck.deal())
 
 
-    #set up players Chips
+    
     player_chips = Chips()
 
 
-    # ask player for bet
+    
     take_bet(player_chips)
 
-    # show cards
+    
     show_some(player_hand, dealer_hand)
 
     while playing:
-        # ask player to hit or stand
+       
         hit_or_stand(deck, player_hand)
         show_some(player_hand, dealer_hand)
 
@@ -194,12 +193,12 @@ while True:
             break
 
 
-            # if player hasnt busted
+            
     if player_hand.value <= 21:
 
         while dealer_hand.value < 17:
             hit(deck, dealer_hand)
-        #show all cards
+        
         show_all(player_hand, dealer_hand)
 
 
